@@ -4,9 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}</style>
-<title>Проект 78</title>
+<title>SPLife</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap">
 <style>
@@ -193,11 +192,109 @@ a.ext{color:var(--accent);font-weight:600;text-decoration:none;white-space:nowra
 @media (prefers-reduced-motion:no-preference){.bar > i{transition:width .4s ease}.toast{animation:pop .35s ease}@keyframes pop{from{transform:translateY(-12px);opacity:0}}}
 </style>
 
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+<style id="skin">
+/* Скин «свежий фитнес»: поверх базовых стилей, меняет только внешний вид */
+:root{--bg:#F3F6F5;--surface:#FFFFFF;--surface-2:#ECF1EF;--ink:#0D1512;--muted:#66756F;--line:#E1E8E5;--accent:#10B26C;--accent-ink:#FFFFFF;--accent-soft:#D9F4E7;--protein:#7B5CF0;--good:#10B26C;--warn:#F08C00;--bad:#E5453A;--r:22px;--f-display:"Manrope","Arial Black",system-ui,sans-serif;--f-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;--sh:0 1px 2px rgba(13,21,18,.05),0 10px 28px -14px rgba(13,21,18,.18)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#090E0C;--surface:#131A17;--surface-2:#1C2521;--ink:#EEF5F1;--muted:#8B9993;--line:#212B27;--accent:#2EE59D;--accent-ink:#04130C;--accent-soft:#11372A;--protein:#A78BFA;--good:#2EE59D;--warn:#FFB84D;--bad:#FF6B63;--sh:0 0 0 1px rgba(255,255,255,.04)}}
+:root[data-theme="dark"]{--bg:#090E0C;--surface:#131A17;--surface-2:#1C2521;--ink:#EEF5F1;--muted:#8B9993;--line:#212B27;--accent:#2EE59D;--accent-ink:#04130C;--accent-soft:#11372A;--protein:#A78BFA;--good:#2EE59D;--warn:#FFB84D;--bad:#FF6B63;--sh:0 0 0 1px rgba(255,255,255,.04)}
+body{font-weight:500;-webkit-tap-highlight-color:transparent}
+h1,h2,h3{font-weight:800;letter-spacing:-.02em}
+.brand h1{font-size:24px}h2{font-size:18px}h3{font-size:15px}
+.num,.stat .v,.set input,.set .i,.timer .num,.hero .big{font-family:var(--f-body);font-variant-numeric:tabular-nums}
+.label{font-size:11px;letter-spacing:.06em;font-weight:700}
+.wrap{padding-block:0 calc(118px + env(safe-area-inset-bottom,0px))}
+header.top{background:color-mix(in srgb,var(--bg) 86%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);padding-block:12px 10px}
+.datenav button{width:38px;height:38px;border:0;border-radius:13px;background:var(--surface);box-shadow:var(--sh)}
+.datenav .d{font-weight:700}
+.sync{background:var(--accent-soft);color:var(--accent);font-weight:700;padding:3px 10px}
+.sync.cloud{color:var(--accent)}
+main{gap:16px}
+.card{border:0;border-radius:var(--r);padding:18px;box-shadow:var(--sh);gap:14px}
+.card.flat{box-shadow:none}
+.hero{background:linear-gradient(140deg,var(--accent) 0%,color-mix(in srgb,var(--accent) 55%,#0AA2FF) 100%);border-radius:28px;padding:22px;box-shadow:0 18px 36px -18px color-mix(in srgb,var(--accent) 70%,transparent)}
+.hero .big{font-size:44px;font-weight:800;line-height:1}
+.bar{height:10px;background:var(--surface-2)}
+.bar > i{background:linear-gradient(90deg,var(--accent),color-mix(in srgb,var(--accent) 60%,#0AA2FF))}
+.bar.p > i{background:var(--protein)}
+.hero .bar{height:12px}
+.stat{border-radius:18px;padding:12px 14px;background:var(--surface-2)}
+.stat .v{font-size:23px;font-weight:800}
+.btn{border-radius:16px;padding:14px 18px;font-weight:700;transition:transform .12s ease,opacity .12s}
+.btn:active,.chip:active,.tick:active{transform:scale(.97)}
+.btn.ghost{background:var(--surface-2)}
+.btn.sm{border-radius:12px;padding:8px 14px}
+.chip{border:0;background:var(--surface-2);padding:8px 14px;font-weight:600}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.field input,.field select,textarea,.set input{border-radius:14px;background:var(--surface-2);border:2px solid transparent}
+.field input:focus,textarea:focus,.field select:focus,.set input:focus{border-color:var(--accent);outline:none}
+.stepper button{width:40px;height:40px;border:0;border-radius:13px;background:var(--surface-2)}
+.tick{border:0;border-radius:12px;background:var(--surface-2);height:40px}
+.tick[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.dot{border-width:2.5px}
+.dot.ok{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.meal{border-bottom-color:var(--line)}
+.notice{border-radius:16px;background:var(--surface-2)}
+.sugg{border-radius:12px;background:var(--accent-soft)}
+.cal span{border-radius:7px}
+.timer{bottom:calc(88px + env(safe-area-inset-bottom,0px))}
+.timer > div{border-radius:20px;box-shadow:0 14px 30px -12px rgba(0,0,0,.4)}
+nav.tabs{left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom,0px));max-width:536px;margin-inline:auto;border:0;border-radius:28px;padding:6px;box-shadow:0 14px 34px -10px rgba(0,0,0,.35),0 0 0 1px var(--line)}
+nav.tabs > div{max-width:none;gap:2px}
+nav.tabs a{border-radius:22px;padding:8px 0 7px;font-weight:700;font-size:10.5px;transition:background .15s,color .15s}
+nav.tabs a[aria-current="page"]{background:var(--accent-soft);color:var(--accent)}
+</style>
+<style id="uznav">
+/* Нижняя панель как в UZFIT: плавающая стеклянная пилюля, активная вкладка — светлая таблетка; подписи остаются */
+nav.tabs{border-radius:999px;padding:6px;background:color-mix(in srgb,var(--surface) 58%,transparent);-webkit-backdrop-filter:blur(24px) saturate(1.5);backdrop-filter:blur(24px) saturate(1.5);border:1px solid color-mix(in srgb,var(--ink) 20%,transparent);box-shadow:0 12px 32px -12px rgba(0,0,0,.55)}
+nav.tabs > div{gap:0}
+nav.tabs a{border-radius:999px;color:var(--ink);padding:9px 0 8px;gap:3px}
+nav.tabs a svg{width:24px;height:24px}
+nav.tabs a[aria-current="page"]{background:color-mix(in srgb,var(--ink) 16%,transparent);color:var(--ink)}
+/* Скин UZFIT на всех вкладках: чёрный фон, тёмно-серые карточки, красный акцент */
+body{color-scheme:dark;--bg:#0A0A0B;--surface:#1F1F22;--surface-2:#2B2B30;--ink:#FFFFFF;--muted:#8E8E95;--line:#3A3A3F;--accent:#F4424F;--accent-ink:#FFFFFF;--accent-soft:#3A3A3F;--protein:#4A9BFF;--good:#2BBF93;--warn:#F5C026;--bad:#F4424F;--r:28px;--sh:none}
+body .card{border-radius:28px;padding:20px;box-shadow:none;border:0}
+body h2{font-size:22px;font-weight:700}
+body .btn{border-radius:999px;background:#F4424F;color:#fff;padding:15px 22px}
+body .btn.ghost{background:var(--surface-2);color:#fff}
+body .btn.sm{padding:9px 16px}
+body .chip{border-radius:999px;background:var(--surface-2);color:#fff}
+body .chip[aria-pressed="true"]{background:#F4424F;color:#fff}
+body .field input,body .field select,body textarea,body .set input{border-radius:18px;background:var(--surface-2);color:#fff}
+body .field input:focus,body textarea:focus,body .field select:focus{border-color:#F4424F}
+body .stat{background:var(--surface-2);border-radius:20px}
+body .bar{background:var(--surface-2)}
+body .bar > i{background:#F4424F}
+body .bar.p > i{background:#4A9BFF}
+body .datenav button{border-radius:50%;background:var(--surface);border:1px solid var(--line);box-shadow:none;color:#fff}
+body .sync{background:var(--surface);color:var(--muted)}
+body .sugg,body .notice{background:var(--surface-2);color:#fff;border-radius:18px}
+body nav.tabs{background:color-mix(in srgb,#1b1b1e 70%,transparent);border-color:#3A3A3F}
+body .hero{background:linear-gradient(140deg,#F4424F 0%,#E5303F 100%);color:#fff;box-shadow:none;border-radius:28px;padding:20px}
+body .hero .label{color:#fff;opacity:.85}
+body .hero .bar{background:rgba(0,0,0,.22)}
+body .hero .bar > i{background:#fff}
+body .lvl{background:rgba(0,0,0,.22);color:#fff}
+body .dot.ok{background:var(--good);border-color:var(--good);color:#0A0A0B}
+body .tick[aria-pressed="true"]{background:var(--good);color:#0A0A0B}
+body .quote{background:var(--surface-2);color:#fff;border-radius:18px}
+body .hero .big{color:#fff}
+body[data-tab="today"] details{display:none}
+.uz-t{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.uz-tile{background:var(--surface);border-radius:24px;padding:14px;display:grid;gap:10px;min-height:118px;align-content:space-between}
+.uz-tile .ic{width:26px;height:26px}.uz-tile .g{height:44px;display:flex;justify-content:center;align-items:center}.uz-tile .g svg{width:64px;height:64px}
+.uz-tile .f{display:flex;justify-content:space-between;align-items:baseline;color:var(--muted);font-size:13px}.uz-tile .f b{font-size:22px;font-weight:700;color:#fff}
+.uz-bars{display:flex;gap:2px;height:10px}.uz-bars i{flex:1;border-radius:3px;background:#3A3A3F}.uz-bars i.on{background:#F4424F}
+.uz-m{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:30px 82px;padding:8px 0}
+.uz-m>div{position:relative;z-index:1;background:var(--surface-2);border-radius:16px;padding:7px 9px;display:flex;gap:6px;align-items:center;min-width:0}
+.uz-m>div svg{width:19px;height:19px;flex:none}.uz-m b{display:block;font-size:13px;font-weight:700;white-space:nowrap}.uz-m small{color:var(--muted);font-size:12px}
+.uz-m svg.pl{position:absolute;left:50%;top:50%;width:116px;height:116px;transform:translate(-50%,-50%);z-index:0}
+</style>
 </head>
 <body>
 <div class="wrap">
   <header class="top">
-    <div class="brand"><h1>Проект 78</h1><span class="num" id="dayN"></span></div>
+    <div class="brand"><h1>SPLife</h1><span class="num" id="dayN"></span></div>
     <div class="datenav">
       <button type="button" data-act="dprev" aria-label="Предыдущий день">‹</button>
       <span class="d" id="dateLbl"></span>
@@ -348,7 +445,7 @@ const saveDay = k => persist("day-" + k);
 const tg = window.Telegram && window.Telegram.WebApp;
 const IN_TG = !!(tg && tg.initData);
 const TG_OK = IN_TG && !!tg.CloudStorage && !!(tg.isVersionAtLeast && tg.isVersionAtLeast("6.9"));
-const aiNote = t => IN_TG ? "Эта функция недоступна в версии для Telegram." : t;
+const aiNote = t => IN_TG ? "ИИ не подключён: нужен сервер на Vercel (см. инструкцию)." : t;
 function tgTheme() {
   document.documentElement.dataset.theme = tg.colorScheme === "dark" ? "dark" : "light";
   const bg = getComputedStyle(document.documentElement).getPropertyValue("--bg").trim();
@@ -459,6 +556,44 @@ async function initCloud() {
     }
     if (changed) { saveLocal(); const a = document.activeElement; if (!a || !/INPUT|TEXTAREA|SELECT/.test(a.tagName)) render(); }
   }, err => { clearTimeout(t); console.warn("db", err); setSync("local", "Облако недоступно, данные на устройстве"); });
+}
+
+/* ---------- ИИ через свой сервер (/api/ai на Vercel): нужен в Telegram, где нет встроенного ИИ Claude ---------- */
+let AI_URL = "api/ai"; try { AI_URL = new URL("api/ai", location.href).href; } catch (e) { /* оставляем относительный адрес */ }
+const blobToB64 = b => new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(String(r.result).split(",")[1]); r.onerror = rej; r.readAsDataURL(b); });
+async function aiRequest(body) {
+  let r; try { r = await fetch(AI_URL, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ initData: (tg && tg.initData) || "", ...body }) }); } catch (e) { throw { code: "network" }; }
+  let d = {}; try { d = await r.json(); } catch (e) { /* не JSON */ }
+  if (!r.ok) throw { code: d.error || "upstream", userId: d.userId };
+  return d.text || "";
+}
+function parseJsonText(t) {
+  const a = t.indexOf("{"), b = t.lastIndexOf("}");
+  if (a < 0 || b <= a) throw { code: "invalid_json" };
+  try { return JSON.parse(t.slice(a, b + 1)); } catch (e) { throw { code: "invalid_json" }; }
+}
+function makeProxyAI() {
+  const call = async (input, opts = {}) => {
+    const turns = Array.isArray(input) ? input.map(m => ({ role: m.role, content: String(m.content) })) : [{ role: "user", content: String(input) }];
+    const body = { messages: turns, tier: (opts.images && opts.images.length) || Array.isArray(input) ? "default" : "quick" };
+    if (opts.images && opts.images.length) {
+      const blob = await shrinkImage(opts.images[0]).catch(() => opts.images[0]);
+      body.image = await blobToB64(blob); body.mediaType = blob.type || "image/jpeg";
+    }
+    return aiRequest(body);
+  };
+  const ai = async (input, opts = {}) => { const text = await call(input, opts); if (opts.onText) opts.onText({ text }); return { text }; };
+  ai.json = async (input, opts) => parseJsonText(await call(input, opts));
+  ai.limits = async () => ({ images: true });
+  return ai;
+}
+async function initProxyAI() {
+  if (state.ai || !IN_TG) return; // в Claude работает встроенный ИИ
+  try {
+    const r = await fetch(AI_URL, { cache: "no-store" });
+    const d = r.ok ? await r.json() : null;
+    if (d && d.ok) { state.ai = makeProxyAI(); state.aiImages = true; render(); }
+  } catch (e) { /* сервера нет — ИИ остаётся выключенным */ }
 }
 
 /* ---------- расчёты ---------- */
@@ -732,6 +867,23 @@ function avgSleep(k) {
 }
 function wakeTarget(p) { const [h, m] = p.bedtime.split(":").map(Number); const t = (h * 60 + m + p.sleepGoal * 60) % 1440; return `${pad(Math.floor(t / 60))}:${pad(t % 60)}`; }
 
+/* ---- UZFIT-блоки: плитки активности и тарелка с БЖУ ---- */
+function uzTiles(d, t, tot, p) {
+  const on = Math.round(Math.min(1, tot.kcal / Math.max(1, t.kcal)) * 13), steps = num(d.steps) ?? 0, sp = Math.min(1, steps / Math.max(1, p.stepsGoal || 8000)), C = 238.76, A = C * 0.75;
+  return `<div class="uz-t">
+    <div class="uz-tile"><svg class="ic" viewBox="0 0 24 24" fill="#F4424F"><path d="M12 2c1 4 6 6 6 12a6 6 0 0 1-12 0c0-2 1-3 2-4 0 2 1 3 2 3 0-4-1-7 2-11z"/></svg><div class="uz-bars">${Array.from({ length: 13 }, (_, i) => `<i class="${i < on ? "on" : ""}"></i>`).join("")}</div><div class="f">Калории<b class="num">${Math.round(tot.kcal)}</b></div></div>
+    <div class="uz-tile"><div class="g"><svg viewBox="0 0 100 100"><g fill="none" stroke-width="7" stroke-linecap="round" transform="rotate(135 50 50)"><circle cx="50" cy="50" r="38" stroke="#3A3A3F" stroke-dasharray="${A} ${C}"/><circle cx="50" cy="50" r="38" stroke="#4A9BFF" stroke-dasharray="${A * sp} ${C}"/></g><path d="M33 62h34l-4-9-9-2-4-8-6 2z" fill="#4A9BFF" transform="translate(0 -4)"/></svg></div><div class="f">Шаги<b class="num">${steps.toLocaleString("ru")}</b></div></div>
+  </div>`;
+}
+function uzPlate(tot, t) {
+  const dr = c => `<svg viewBox="0 0 24 24" fill="${c}"><path d="M12 3c3 5 6 7 6 11a6 6 0 0 1-12 0c0-4 3-6 6-11z"/></svg>`;
+  const fl = `<svg viewBox="0 0 24 24" fill="#F4424F"><path d="M12 2c1 4 6 6 6 12a6 6 0 0 1-12 0c0-2 1-3 2-4 0 2 1 3 2 3 0-4-1-7 2-11z"/></svg>`;
+  const ch = `<svg viewBox="0 0 24 24" fill="#4A9BFF"><path d="M15 3a5 5 0 0 1 4 8l-3 3-2 4-2 2-3-3 2-2 4-2 2-3a2 2 0 0 0-2-3z"/></svg>`;
+  const br = `<svg viewBox="0 0 24 24" fill="#2BBF93"><path d="M4 17c0-5 5-12 11-12 3 0 5 2 5 4 0 6-7 11-12 11-2 0-4-1-4-3z"/></svg>`;
+  const pill = (ic, v, l) => `<div>${ic}<span><b class="num">${v}</b><small>${l}</small></span></div>`;
+  const plate = `<svg class="pl" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="#D9D3C7"/><circle cx="50" cy="50" r="40" fill="#ECE7DC"/><path d="M30 24l22-6 6 18-24 4z" fill="#D9A24F"/><circle cx="68" cy="30" r="11" fill="#B5442A"/><circle cx="44" cy="58" r="13" fill="#fff"/><circle cx="44" cy="58" r="6" fill="#F59A1B"/><circle cx="64" cy="64" r="9" fill="#fff"/><circle cx="64" cy="64" r="4" fill="#F59A1B"/><rect x="70" y="42" width="14" height="30" rx="7" fill="#8C3B2A" transform="rotate(20 77 57)"/><circle cx="28" cy="52" r="7" fill="#D6432E"/></svg>`;
+  return `<div class="uz-m">${plate}${pill(fl, `${Math.round(tot.kcal)} / ${t.kcal}`, "Калории")}${pill(dr("#F5C026"), `${Math.round(tot.f)} / ${t.fat} г`, "Жиры")}${pill(ch, `${Math.round(tot.p)} / ${t.prot} г`, "Белки")}${pill(br, `${Math.round(tot.c)} / ${t.carb} г`, "Углеводы")}</div>`;
+}
 function viewToday() {
   const k = state.date, d = peek(k), p = state.profile, t = targets(k), tot = totals(k), pl = planFor(k), sc = dayScore(k);
   const st = slotTargets(t), sl = slotTotals(k);
@@ -754,17 +906,10 @@ function viewToday() {
     <div class="row between small"><a class="lvl" href="#goals" style="color:inherit;text-decoration:none">Ур. ${lv.i + 1} · ${lv.name}</a>${nm ? `<span style="opacity:.85">Отметка ${nm.m} кг${nm.reward ? ` → ${esc(nm.reward)}` : ""}</span>` : ""}</div>
     ${p.why ? `<div class="quote">${esc(p.why)}</div>` : ""}
   </section>
-  ${p.why ? "" : `<a class="notice small" href="#goals" style="color:inherit;text-decoration:none">Напиши во вкладке «Цели», <b>зачем тебе это</b>, и назначь награды за каждые 2 кг →</a>`}
-  ${ageNote}
+  ${uzTiles(d, t, tot, p)}
   <section class="card">
     <div class="row between"><h2>Питание</h2><span class="label">главное в плане</span></div>
-    <div class="rings">${ring(tot.kcal, t.kcal)}
-      <div class="macro">
-        <div class="row small"><span><b>Белок</b></span><span class="num">${Math.round(tot.p)} / ${t.prot} г</span></div>${bar(tot.p, t.prot, "p")}
-        <div class="row small"><span>Жиры</span><span class="num">${Math.round(tot.f)} / ${t.fat} г</span></div>${bar(tot.f, t.fat)}
-        <div class="row small"><span>Углеводы</span><span class="num">${Math.round(tot.c)} / ${t.carb} г</span></div>${bar(tot.c, t.carb)}
-      </div></div>
-    <div class="grid2">${SLOTS.map(([id, n]) => `<div class="stat"><span class="label">${n}</span><span class="v" style="font-size:16px"><span class="${sl[id].kcal > st[id].kcal * 1.25 ? "over" : ""}">${Math.round(sl[id].kcal)}</span><small> / ${st[id].kcal} ккал</small></span><span class="small muted num">белок ${Math.round(sl[id].p)} / ${st[id].p} г</span></div>`).join("")}</div>
+    ${uzPlate(tot, t)}
     ${togBtn("veg", d.veg, "Овощи в 2+ приёмах", "Половина тарелки в обед и ужин")}
     ${togBtn("clean", d.clean, "Без сладкого, фастфуда и алкоголя", "Сладкие напитки и соки тоже считаются")}
     <div class="grid2"><a class="btn" href="#food" style="text-align:center;text-decoration:none">Добавить еду</a>${state.ai ? `<button type="button" class="btn ghost" data-act="goNext">Что съесть дальше?</button>` : ""}</div>
@@ -830,12 +975,7 @@ function viewFood() {
   return `
   <section class="card">
     <div class="row between"><h2>Еда · ${fmtDate(k)}</h2><span class="num small">${Math.round(tot.kcal)} / ${t.kcal} ккал</span></div>
-    ${bar(tot.kcal, t.kcal)}
-    <div class="grid3">
-      <div class="stat"><span class="label">Белок</span><span class="v">${Math.round(tot.p)}<small> / ${t.prot}</small></span></div>
-      <div class="stat"><span class="label">Жиры</span><span class="v">${Math.round(tot.f)}<small> / ${t.fat}</small></span></div>
-      <div class="stat"><span class="label">Углев.</span><span class="v">${Math.round(tot.c)}<small> / ${t.carb}</small></span></div>
-    </div>
+    ${uzPlate(tot, t)}
     <div class="small">${left >= 0 ? `Осталось <b class="num">${left}</b> ккал и <b class="num">${Math.max(0, leftP)}</b> г белка.` : `<span class="over">Перебор на <b class="num">${-left}</b> ккал.</span> Не страшно: завтра просто держи норму, не урезай.`}</div>
   </section>
   ${state.ai ? `<section class="card">
@@ -1132,6 +1272,7 @@ function render() {
   document.getElementById("toToday").hidden = state.date === TODAY;
   const n = diffDays(p.startDate, state.date) + 1, tot = diffDays(p.startDate, p.goalDate) + 1;
   document.getElementById("dayN").textContent = n >= 1 ? `день ${n}/${tot}` : "";
+  document.body.dataset.tab = state.tab;
   document.getElementById("app").innerHTML = VIEWS[state.tab]();
   document.querySelectorAll("nav.tabs a").forEach(a => a.setAttribute("aria-current", a.dataset.tab === state.tab ? "page" : "false"));
 }
@@ -1160,16 +1301,24 @@ const FOOD_PROMPT = () => `Предпочтения человека: ${state.pr
 Ответь только JSON: {"items":[{"name":"Гречка варёная 200 г","grams":200,"kcal":220,"p":8,"f":2,"c":42}],"note":"одно короткое замечание по белку или порции, можно пустую строку"}`;
 function aiError(e) {
   if (e?.code === "not_granted") return "Доступ к ИИ не разрешён для этой страницы.";
+  if (e?.code === "forbidden") return `Доступ закрыт. Добавь свой Telegram ID ${e.userId} в ALLOWED_IDS на сервере (Vercel) и обнови деплой.`;
+  if (e?.code === "unauthorized") return "ИИ работает только внутри Telegram, открой приложение через бота.";
+  if (e?.code === "too_large") return "Фото слишком большое. Сделай снимок поменьше.";
+  if (e?.code === "network") return "Нет связи с сервером ИИ. Проверь интернет и попробуй снова.";
   if (e?.code === "rate_limited") return "Слишком много запросов. Подожди минуту и попробуй снова.";
   if (e?.code === "invalid_json") return "ИИ ответил не по формату. Нажми ещё раз или добавь вручную.";
-  return "ИИ сейчас недоступен. Добавь вручную или попробуй позже.";
+  if (e?.code === "image_rejected") return "Фото не подошло (формат или размер). Сними ещё раз или выбери другое фото.";
+  if (e?.code === "images_unavailable") return "Отправка фото ИИ не разрешена. Закрой страницу, открой заново и разреши отправку фото.";
+  if (e?.code === "cancelled") return "";
+  return `ИИ сейчас недоступен${e?.code ? " (" + e.code + ")" : ""}. Добавь вручную или попробуй позже.`;
 }
 async function aiFood(text, image) {
   if (!state.ai || state.busy) return;
   state.busy = true; state.err = ""; render();
   try {
     const input = image ? `${FOOD_PROMPT()}\n\nНа фото еда. Определи блюда и примерный вес.${text ? " Уточнение: " + text : ""}` : `${FOOD_PROMPT()}\n\nСъел: ${text}`;
-    const res = await state.ai.json(input, image ? { images: [image], modelTier: "default" } : { modelTier: "quick" });
+    const blob = image ? await shrinkImage(image).catch(() => image) : null; // всегда отправляем JPEG до 1400 px
+    const res = await state.ai.json(input, blob ? { images: [blob], modelTier: "default" } : { modelTier: "quick" });
     const items = cleanItems(res);
     if (!items.length) throw { code: "invalid_json" };
     state.foodDraft = { items, note: String(res?.note || "").slice(0, 300) };
@@ -1419,6 +1568,7 @@ fixSeed();
 route();
 initCloud().catch(e => console.warn("init", e));
 initTelegram();
+initProxyAI();
 })();
 </script>
 
